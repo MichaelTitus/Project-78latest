@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <title>Family Book</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Family Book</h1>
+    <div>
+        <img id="image1" src="https://img.thriftbooks.com/api/images/i/m/0449EAC9B655DF6E4647BA0E6905D0A06BC769AA.jpg">
+        <br>
+        <h3 id="names"></h3>
+    </div>
+    <br>
+    <button id="btn1" type="button" onclick="nextslide()">Turn page</button>
+
+
+    <script>
+        var images = [
+            "https://lh3.googleusercontent.com/D7bo2ao4fpa35E2RvEMKBCdZ61SGefiQfNf0eDUmm4hJmtYcphN8DIfeAcAtC394fEG7PRNxxIRk5xex2m7-SixnO0Q8J-HH_3MIlFFO3vCw2_Ci3eVruuoCMDEfbMRXK4Jbz_YCRl9uamZ-CwDytIBwEjk_rv1y0mynoYAsi5vob-Oa6cnOxEWDNRgWch-Ez2LKgwR_sbjce306tMnEXbrZoMGd8vzUyKgLynq7TNEwoIDWFq7_-wksi1b2h3uFWKCwUqjs4Mw6lSE3E37oPhTfzzyQZhymYorl_jJ01zX06aRzdlj4zOpYdTAbCY9KBJDVzss_iHBPRpVlA9eerHZwWJlQtimrBd2L8j9anlP6hvszXstw_LnahhEeuBRN6GBbyuFLfn0WpApB99orOENYfS_2HmProxp5clVK0ctytC8YqV-tDkhN8NLSvJT3d9ToCgex1RyRwzLaBJlZRMp1QDKzNetwfsTlqeIRrDhjUHm0bWHI0HIOx5vguN5HzrshF7IXlD6KLTH5uahJbjpuKsmeH1ERYli6WUovsgsk6omEG55-UZwFDOh67wsB5f0xuYtvU920q_sZnmnycRHITk8IiREdqV4GQWZCch308902eJfPjALfKVpIyUhyLXZ3JxNCpe9yRv_HFOmmAJEjLo1aBqdFsCHXXHZ07_rcBbwcx4Ug4qTIo4Sasg=w960-h720-no?authuser=0",
+            "https://lh3.googleusercontent.com/Ia7PeVi3o7zaBN_rAHtl5DBiuYWQunb-VlMlrNnTLjeOjFYMVTBxfqp4YBiOceQlvevvou17DX3DMJZSzSNGkcoX9K4kxMIbve_vnlJDLI39zaBRRa_F1zgaU7NvNVj4XC5pV7Q0XbnW_dIMKxOUCCIISFw41LAYJieIhnV8FqzJD9A309U0KHJUjeOhk6qR9LvuulBhR2OKm2DUbxZbRk_KOjoyhSXOdaCEWJrxjM0Rjbj9fdQ6twAvDkzkVIDjCCGKkY6ABeYfwb_HjBn_vlBLQ4RUE6abyhomNEKJ84_4wYGW5uD_vgSJ0FXDR8BkhlxSbmY4WFKkwwOeXyhLrfZCtYlCDbEm5ufD_-H24TJoQxHTvvewj0HkvLetBS9Zd8yd5fHfMp4xsL9v_-fD9VApbKBBxIISGy9lsmIh1AO7Wyb7Ag1cb9J1SYrDJ2gcar5P404YxmHR1G7lGu4BDp2BY3eWrLQNa6l4sbC0zkcgsWg7rDF4mlCk-720bMgOImnr24PhLwxueImTYdVyUbBP9HJMP6W174zAs3YG4Ql9vdK2CzlCRUscmOykEf_tQPziOd39JsLep9vqY3arJcnL7xl73W7Glo0bVP7m0RmK8DaEYzsnR3-Xq7CW04itC4-pM9U3v5Rvo9zW461ypnSTnNIxADCoGXJg5ZeCy386culZDUXidMxQxdFZkQ=w751-h1001-no?authuser=0",
+            "https://lh3.googleusercontent.com/PJMlw3jGm5C18pkLVfn1ekLFL-eTlBvVFb1pAt9rcw8q15uHDKVlfN1zOzC131K6YhhZEO7k7-nRmW32GFVPwubkyRMYPcwanxBFX2EXeR-vc4i2km2ujdsQlKeylRAz51DB8rBlISlKuLAoI9jPFq_c2dywCbsqQQfCmvjRs_Zw1fqJ6IG0qKZ7JY77YfCHr2WjA6OYyQRAYUX-lVOBvo5m2GsrHOJeUDl69Xp1HWEIFpnGu393YjofLFwmusdo0lmQs2gQn0URCPBUffxpEAI-KmXehNalWDc2HeZ8g95eWZ2qqJ4SxImrKx80sfB8-ly5tCx4ehVqmSvK1xUDZg5wKWjr7UlhEM7mcQ0fKtTtrn8VUYiYrkAg5a7CEL6P18otpWVL0IZQRyXViNtkOduZN04rdiWUuM_676FCLDdOIbjOHIQ9QrUm_UpxSYC0P1quK1XXFk-GrqYrSlglmITEn4Ng1qjrkCgBiT3IX4bylKHnWUqfVAjIZlP5TTxZlNasS6zlJOegRAsvCN__0UMGolx3_WuFO35fWGqNREkCkXdUkfrFDEYZ7iFCiZslGCIgnOOm7OZpaygvFNST3T1VbO4v0rG85Aw6Hnxq5h_6DZZilJDXbbRDCUq06U9Vdl9iaT93MunSHoPoVou1ocWChVEG2cywPjOSqbNG4g__TvIKKPKkWqf-kPebLg=w1024-h768-no?authuser=0",
+            "https://lh3.googleusercontent.com/M236pCH9IauoDAa2Pn1QUE0Mpe7NpGLex3BVssnIxBzNhEmAIw3a2IBAHEVzXQJCvRIYFKeaxoMtB1NOAtajsyM1rAVXvzlPWtBf3qF3-3DE-9CLl08l_ZBeKiW2VnRjvfDRvurhTuB3bXqxXdV9gqhfQVjAqKyo_d-0E7LVQuH4aY9KP42L5BZRasM7qaIrOEXgXWmGVbWB4vYWmbm4A5HxlT7wWp8k-MB3NyaSSvEGPyRu6ACwNaoNRgLIvN4LmKvSMo-xd8zOO5Ek1YAYPha5lREZPdvwqMx6jV2cqLspj1yaXs8LK36PsiCtDHmKR4tViVD6AnaCsuTjNxI-liKWda5DFuDwu5Wc4fOQD82E2vU-izD-7_FZFy4mOZJXN3wvRTlfmiREA9JEhFMF4eHtaITcRDjgG0_CHhcaQLS-YAon_0jp1yEjm4CP7IW0P5qjQ2-vIloPl0MelyzCfCwtyb47GeuhIg52ArPV5o9q3nx8WBJaPV_Poj0zhcwG4IO9lhHA1ZXEv9xfU2uLPgOQP1lYOWXeGxrRA3cFSq2T5EzCAlzlHQVWkrwyHR7vXSEQTIHZPEM908njUMw1tCaYDBiFrsNtjVTxpb894WSNht-JSvzpa7Dwsdu0kJuIDDqEiD-FQPCKe-4k1I2Ez8l2uXE6KcaFWJg1kt9KyZmH2MXanxa1bb97GxzUWg=w1526-h1017-no?authuser=0",
+            "https://lh3.googleusercontent.com/o8k8lUPbfY09kA46JA9zr5Fs_QYAN8bZJAD2WtQ5QLl1_nGXYr_CrNR_onACZJjjFkCjQctddjrsBu7zjNVQxu57FBIdNU44EY79iYMFQlSFFofwDawoK0feouvZjRbKuiE9XKR-3Yxo6fKLWll2FrDCojgaokDhRwptc6D5g0M9vPBK-CbYEY2toa0i5fm5Fsn0PPXiPw4hi36IA6i6_sOTk4BMQb5g-BiuK47-Aq-87SXbmdeacbCVv9OFMgowjUFq4qrCm2bXJXCuutWy_y0gVyMPMxnjVx69HphAdZ1wr5EaO43MO5VVaFvKYMDZMmQ2oHyl2_jk8WoAOgIXiR_e4aaWrsnrj_HOs0lz78vjJpJ2TaFqsZP0wSjOTu69xMlL63UFlvoGvwHfHYEBHbiHycuTlesXoH2IfJ_NyjP6Bx8ElUbP4vkpR3ml4tct9A90H-gJX0t-gy0iVvKvK_ore_jWqy40jAaX-t3DyyFV0YpNZe5p0fCjd8u95iWduIO3AZTu88PXg3qg18Q8nikpxAMELQxduBS79hOlYVFwJanmhal5pilHNpVLQ-4_hl-uMuTyMqgM5ZNOAijbxyAs4Er44YjzwYdUy5l_g7JjN3LQJDHG1oSS0HPLUmbw6m5h9GcnKIs8ATre-8X3D2-TemYAELWjaH4hVgXLMzIfqDvkU2_uE4-CL7lPuA=w763-h1017-no?authuser=0",
+            "https://lh3.googleusercontent.com/Pbwzh-N8RzIWMe0iwbjb4HajuEGyZeO_C2hLNN0cx188dnLbzu_LD-iRGpKdvpBoAZTO9aw3nIgJ0t62Mul1n06L4Tq685dLMRnsJ-TxvwFIaEI6wRnmB32PAjePRaZTFoIgOxNARq43Wd-iFZNy0VhvAiUdHodgAsWnoHeSsO3EbkNhLpz3i3PjKIT9AYLU6zfm4yGXvHQ29gJP4cck9C1EK5VJF3Ro9Bcx6vUFDXiUoNCCaTnxtr9rvQSaJFh79gmBOQdjpnO6OsHYmWFKOzA9OZDE74ws2vB1sFjTvVEG7jB6WvmbqiVbAL-GcNQaYKbv3o-dWzq_cP7XLeQCLHXkVzXPQCnnRXHMpLOkkICrmgwM5Usgn6tok1ekDn6pwydVv882-d0zaJbBAOM7z0joHEHpOtzpZM1TPGB8ohmtVZQGcNk0N6m5EB_V0cszUgigd_TwoRiZWUHJ6rcLqk7-dcF3YrMpROPMvRnm71AXLU3_gqilD7mdNBA6-WetJLKgAN3xQqxPz36z0Zg4NaGjrqnf9K6oBRBVWcBQu_aCROsv6SZfZWJ0dZGrJWtbNogLD30v6Sz-by-HMD1BuJwxdSXkp9xDZ9dHcp2SJFBQkBUdY-d686pYUmVt314iIJlB9m9aCBidsP5isAQAMaCGTlYDnGRW8d88FERg7A6KgmHFXsNy-mFDv6CwAA=w763-h1017-no?authuser=0",
+            "https://lh3.googleusercontent.com/DPqaGTuendt2b4GjIbi3s0YBqhhl-KQLoSAg3GOd2lEzbR1rLONg64_mmxvAfOab-H3B2zbkbOccAfg7Ghpyj86ZYiiK58yTU8uc7MZn6FVqUPdza9NnPJrIcjdI9CJxsNYyqBz-5uXJPq__JA5j4Lm6krJr6ck2bQVtwDUzLBLFfany0geig8VzQVP5oTiWJdf7mvKSLnHLltHm4n6qqA4lSK1yz6c6tgFHdMckJZ9_-WLcX-Y_mCubRQBqNERx16z8jf2q9VP4Ljptb4emoghAHwy4Nk30uflCKmRiwnpw63oiB-4KE-Ny2_npBaT2FsjsT6TE6GObPgbS-zqbvXaXYnxKR7Q9SEd2H--smtwJ4FM8T9IL7vRFvb3XmZpFYFKTFaHPgF-D-gkp8DMTH52opMsQHjfFQOmgro-8VFxrXon3G4ge9v5F5-xhvwB6Qz9lUwiQGuTMpQw_NCkPmJmIyOdfRGqwKQiTTq8VYIHJufTMmocZG_yovfWiT4muua7SGagX14GKXcLQ25dEz33ZBFuhpY7v0jM_Qa8dj1sbNVHcXjpEIBzMdgvQWnwgdh_scjfKTf6ZTVa35PI-GkmiHzFCjIawtN50L5YPdGf1ZPW1Uz85ffrl0evtTWS6KipB7CKRyOzFY9rouHR9biizAYBBnc_zAMaXtSJDOMDl3VIYUWQWWYcT76oatA=w782-h1042-no?authuser=0",
+            "https://lh3.googleusercontent.com/pw/ACtC-3daYwTeQ9M7DizjaqcD4uXXIqu9NWwjY9zIoI78hlkSgKgQYwxxQmMkNNtrn5DsRA6chRbyBCvgWkEMfX1ta1xB2zxfAY_3YJVWyoNz8mmtp3mJvwizN2fB9IEpKl-b4SZmTOlwhLdn59O4DARwEMCr6A=w684-h912-no?authuser=1"
+        ];
+        var names = ["Thomas Titus", "Anita Thomas", "John Thomas", "Soshama John", "Meena John", "Vijay Thomas", "Noah John", "Michael Titus"];
+        var i = 0;
+        function nextslide() {
+            document.getElementById("image1").src = images[i];
+            document.getElementById("names").innerHTML = names[i];
+            i++;
+            if (i == 8) {
+                i = 0;
+            }
+        }
+
+
+    </script>
+
+</body>
+
+</html>
